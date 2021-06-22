@@ -8,7 +8,7 @@ public class E3015 {
 				+ (int) (Math.random() * 10) + (int) (Math.random() * 10);
 
 		Scanner input = new Scanner(System.in);
-		System.out.print("Enter your lottery pick (two digits): ");
+		System.out.print("Enter your lottery pick (three digits): ");
 		String guess = input.nextLine();
 
 		char lotteryDigit1 = lottery.charAt(0);
@@ -21,19 +21,22 @@ public class E3015 {
 
 		System.out.println("The lottery number is " + lottery);
 
-		//todo case 2 & case 3
-		boolean case2 = guessDigit1 == lotteryDigit2 && guessDigit2 == lotteryDigit3;
-		boolean case3 = guessDigit1 == lotteryDigit1
-				|| guessDigit1 == lotteryDigit2
-				|| guessDigit2 == lotteryDigit1
-				|| guessDigit2 == lotteryDigit2;
+		boolean case2 = (guessDigit1 == lotteryDigit2 && guessDigit2 == lotteryDigit3 && guessDigit3 == lotteryDigit1)
+				|| (guessDigit1 == lotteryDigit1 && guessDigit2 == lotteryDigit3 && guessDigit3 == lotteryDigit2)
+				|| (guessDigit1 == lotteryDigit3 && guessDigit2 == lotteryDigit1 && guessDigit3 == lotteryDigit2)
+				|| (guessDigit1 == lotteryDigit2 && guessDigit2 == lotteryDigit1 && guessDigit3 == lotteryDigit3)
+				|| (guessDigit1 == lotteryDigit3 && guessDigit2 == lotteryDigit2 && guessDigit3 == lotteryDigit1);
+
+		boolean case3 = guessDigit1 == lotteryDigit1 || guessDigit1 == lotteryDigit2 || guessDigit1 == lotteryDigit3
+				|| guessDigit2 == lotteryDigit1 || guessDigit2 == lotteryDigit2 || guessDigit2 == lotteryDigit3
+				|| guessDigit3 == lotteryDigit1 || guessDigit3 == lotteryDigit2 || guessDigit3 == lotteryDigit3;
 
 		if (guess.equals(lottery))
 			System.out.println("Exact match: you win $10,000");
 		else if (case2)
 			System.out.println("Match all digits: you win $3,000");
 		else if (case3)
-			System.out.println("Match one digit: you win $1,000");
+			System.out.println("Match one/two digit(s): you win $1,000");
 		else
 			System.out.println("Sorry, no match");
 	}
