@@ -1,4 +1,4 @@
-package Ch02;
+package Ch02.Examples;
 
 public class L201 {
 	public static void main(String[] args) {
